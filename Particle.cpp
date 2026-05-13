@@ -1,8 +1,7 @@
 #include "Particle.h"
 
 Particle::Particle(RenderTarget &target, int numPoints,
-				   Vector2i mouseClickPosition)
-	: m_A(2, numPoints)
+				   Vector2i mouseClickPosition) : m_A(2, numPoints)
 {
 	m_ttl = TTL; // "Time To Live" -- (currently 5 sec.)
 	m_numPoints = numPoints;
@@ -24,8 +23,7 @@ Particle::Particle(RenderTarget &target, int numPoints,
 	m_color2 = Color(255, 0, 0, 0); // Red
 
 	/*******************************************************************************/
-	// Generate numPoint vertices by sweeping a circular arc with randomized
-	// radii
+	// Generate numPoint vertices by sweeping circular arc with randomized radii
 
 	double theta = (float)rand() / RAND_MAX * (M_PI / 2.0);
 	double dTheta = 2 * M_PI / (numPoints - 1); // Amount rotated per vertex
@@ -48,7 +46,13 @@ void Particle::draw(RenderTarget &target, RenderStates states) const
 
 void Particle::update(float dt)
 {
-	/// YOUR CODE HERE !!!
+	m_ttl -= dt;
+	rotate(dt * m_radiansPerSec);
+	scale(SCALE); // The % to scale per frame
+	float dx = m_vx * dt;
+	m_vy -= G * dt; // Vertical velocity changes by gravitational constant G
+	float dy = m_vy * dt;
+	translate(dx, dy);
 }
 
 void Particle::translate(double xShift, double yShift)
