@@ -4,3 +4,7 @@
 BasedOnStyle: LLVM
 
 BreakBeforeBraces: Allman
+
+UseTab: Always
+IndentWidth: 4
+TabWidth: 4
