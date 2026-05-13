@@ -1,8 +1,39 @@
 #include "Particle.h"
 
-Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition)
+Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition) : m_A(2, numPoints)
 {
-    /// YOUR CODE HERE !!!
+    m_ttl = TTL; // "Time To Live" -- (currently 5 sec.)
+    m_numPoints = numPoints;
+    m_radiansPerSec = (float)rand() / RAND_MAX * M_PI; // Random angular velocity in range of [0:PI]
+    m_cartesianPlane.setCenter(0,0);
+
+    // Set size to RenderWindow (monitor pixel) coordinates; Invert y-axis
+    m_cartesianPlane.setSize(target.getSize().x, (-1.0) * target.getSize().y);
+
+    // Map mouseClickPosition to Cartesian plane & store in centerCoordinate
+    m_centerCoordinate = target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
+
+    m_vx = rand() % 2; // Initial horizontal & vertical velocities of particle
+    m_vy = rand() % 2; // Set to random pixel velocities
+
+    m_color1 = Color(0, 0, 0, 0); // White
+    m_color2 = Color(255, 0, 0, 0); // Red
+
+    /*******************************************************************************/
+    // Generate numPoint vertices by sweeping a circular arc with randomized radii
+
+    double theta = (float)rand() / RAND_MAX * (M_PI / 2.0);
+    double dTheta = 2 * M_PI / (numPoints - 1); // Amount rotated per vertex
+
+    for (int j = 0; j < numPoints; j++)
+    {
+        int r = rand() % 80 + 20; // Range of [20:80]
+        int dx = r * cos(theta);
+        int dy = r * sin(theta);
+        m_A(0, j) = m_centerCoordinate.x + dx;
+        m_A(1, j) = m_centerCoordinate.y + dy;
+        theta += dTheta;
+    }
 }
 
 void draw(RenderTarget& target, RenderStates states) const
