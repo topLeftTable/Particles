@@ -5,20 +5,20 @@ Engine::Engine()
 	/// YOUR CODE HERE !!!
 }
 
-void run()
+void Engine::run()
 {
 	/// YOUR CODE HERE !!!
 }
 
-void input()
+void Engine::input()
 {
 	/// YOUR CODE HERE !!!
 }
-void update(float dtAsSeconds)
+void Engine::update(float dtAsSeconds)
 {
 	/// YOUR CODE HERE !!!
 }
-void draw()
+void Engine::draw()
 {
 	/// YOUR CODE HERE !!!
 }

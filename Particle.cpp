@@ -41,27 +41,27 @@ Particle::Particle(RenderTarget &target, int numPoints,
 	}
 }
 
-void draw(RenderTarget &target, RenderStates states) const
+void Particle::draw(RenderTarget &target, RenderStates states) const
 {
 	/// YOUR CODE HERE !!!
 }
 
-void update(float dt)
+void Particle::update(float dt)
 {
 	/// YOUR CODE HERE !!!
 }
 
-void translate(double xShift, double yShift)
+void Particle::translate(double xShift, double yShift)
 {
 	/// YOUR CODE HERE !!!
 }
 
-void rotate(double theta)
+void Particle::rotate(double theta)
 {
 	/// YOUR CODE HERE !!!
 }
 
-void scale(double c)
+void Particle::scale(double c)
 {
 	/// YOUR CODE HERE !!!
 }
