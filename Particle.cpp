@@ -57,7 +57,10 @@ void Particle::update(float dt)
 
 void Particle::translate(double xShift, double yShift)
 {
-	/// YOUR CODE HERE !!!
+	TranslationMatrix T(xShift, yShift, 3); // nCols is temporarily a random int
+	m_A = m_A + T;
+	m_centerCoordinate.x += xShift;
+	m_centerCoordinate.y += yShift;
 }
 
 void Particle::rotate(double theta)
