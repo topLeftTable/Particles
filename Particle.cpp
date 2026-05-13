@@ -1,5 +1,34 @@
 #include "Particle.h"
 
+Particle::Particle(RenderTarget& target, int numPoints, Vector2i mouseClickPosition)
+{
+    /// YOUR CODE HERE !!!
+}
+
+void draw(RenderTarget& target, RenderStates states) const
+{
+    /// YOUR CODE HERE !!!
+}
+
+void update(float dt)
+{
+    /// YOUR CODE HERE !!!
+}
+
+void translate(double xShift, double yShift)
+{
+    /// YOUR CODE HERE !!!
+}
+
+void rotate(double theta)
+{
+    /// YOUR CODE HERE !!!
+}
+
+void scale(double c)
+{
+    /// YOUR CODE HERE !!!
+}
 
 bool Particle::almostEqual(double a, double b, double eps)
 {
