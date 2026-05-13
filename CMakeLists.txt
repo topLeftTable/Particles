@@ -14,11 +14,11 @@ FetchContent_MakeAvailable(SFML)
 
 add_executable(Particles main.cpp
         main.cpp
-        Engine.h
         Matrices.h
+        Engine.h
+        Engine.cpp
         Particle.h
-        Particle.cpp
-        Engine.cpp)
+        Particle.cpp)
 
 target_compile_features(Particles PRIVATE cxx_std_20)
 target_link_libraries(Particles PRIVATE sfml-graphics sfml-audio sfml-window)
