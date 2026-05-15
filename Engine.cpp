@@ -19,12 +19,12 @@ void Engine::run()
         p.unitTests();
         cout << "Unit tests complete. Starting engine..." << endl;
 
-        while (m_Window) {
+        while (m_Window.isOpen()) {
           sf::Time deltaTime = clock.restart();
           float dt = deltaTime.asSeconds();
-          input(); #FIXME SCOPE && ARGS
-          update(); #FIXME - 
-          draw(); #FIXME -
+          input();
+          update(dt); 
+          draw();
         }
 }
 
@@ -36,7 +36,7 @@ void Engine::input()
         mt19937 gen(rand());
         uniform_int_distribution<> dist(25, 50);
  
-        while(m_Window.pollEvent(event) {
+        while(m_Window.pollEvent(event)) {
           if (event.type == sf::Event::KeyPressed) {
             if (event.key.code == sf::Keyboard::Key::Escape) {
               m_Window.close();
@@ -45,7 +45,7 @@ void Engine::input()
           if (event.type == sf::Event::MouseButtonPressed) {
             sf::Vector2i mPos = sf::Mouse::getPosition(m_Window);  
             for (int i = 0; i < 5; i++) { 
-               Particle(RenderTarget &target, dist(gen), mPos); #FIXME what is a render target lmao
+               Particle(m_Window, dist(gen), mPos);
             }
           }
         }
@@ -53,9 +53,25 @@ void Engine::input()
 void Engine::update(float dtAsSeconds)
 {
 	/// YOUR CODE HERE !!!
+        int size = m_particles.size();
         
+        for (vector<Particle>::iterator it = m_particles.begin(); it != m_particles.end();) { 
+           if (it->getTTL() > 0.00) { 
+             it->update(dtAsSeconds);
+             ++it;
+           }
+           else {
+             it = m_particles.erase(it);
+           }
+        }
 }
 void Engine::draw()
 {
 	/// YOUR CODE HERE !!!
+        m_Window.clear();
+        int size = m_particles.size();
+        for (int i = 0; i < size; i++) {
+           m_Window.draw(m_particles[i]);
+        }
+        m_Window.display();
 }
