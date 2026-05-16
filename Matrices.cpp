@@ -94,7 +94,6 @@ ostream &operator<<(ostream &os, const Matrix &a)
 	{
 		for (int y = 0; y < a.getCols(); y++)
 		{
-			os<<setw(10);
 			os<<a(x, y)<<' ';
 		}
 		os<<"\n";
