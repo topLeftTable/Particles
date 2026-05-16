@@ -3,18 +3,15 @@
 
 Engine::Engine()
 {
-	/// YOUR CODE HERE !!!
 	unsigned int w = VideoMode::getDesktopMode().width;
 	unsigned int h = VideoMode::getDesktopMode().height;
 	if (w % 2 != 0) w--; // bandaid fix for off-by-one
 	if (h % 2 != 0) h--;
 	m_Window.create(sf::VideoMode(w, h), "Particles", Style::Default);
-	// I feel like there should be more to this?
 }
 
 void Engine::run()
 {
-	/// YOUR CODE HERE !!!
 	sf::Clock clock;
 
 	cout << "Starting Particle unit tests..." << endl;
@@ -35,7 +32,6 @@ void Engine::run()
 
 void Engine::input()
 {
-	/// YOUR CODE HERE !!!
 	sf::Event event;
 	random_device rand;
 	mt19937 gen(rand());
@@ -66,9 +62,6 @@ void Engine::input()
 }
 void Engine::update(float dtAsSeconds)
 {
-	/// YOUR CODE HERE !!!
-	int size = m_particles.size();
-
 	for (vector<Particle>::iterator it = m_particles.begin();
 		 it != m_particles.end();)
 	{
@@ -85,7 +78,6 @@ void Engine::update(float dtAsSeconds)
 }
 void Engine::draw()
 {
-	/// YOUR CODE HERE !!!
 	m_Window.clear();
 	int size = m_particles.size();
 	for (int i = 0; i < size; i++)

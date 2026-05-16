@@ -15,7 +15,6 @@ Matrix::Matrix(int _rows, int _cols) : rows(_rows), cols(_cols)
 
 Matrix operator+(const Matrix &a, const Matrix &b)
 {
-	// wk YOUR CODE HERE !!!
 	if (a.getRows() != b.getRows() || a.getCols() != b.getCols())
 	{
 		throw runtime_error("Error: dimensions must agree");
@@ -37,7 +36,6 @@ Matrix operator+(const Matrix &a, const Matrix &b)
 /// usage:  c = a * b;
 Matrix operator*(const Matrix &a, const Matrix &b)
 {
-	// ld YOUR CODE HERE !!!
 	if (a.getCols() != b.getRows())
 	{
 		throw runtime_error("Error: dimensions must agree");
@@ -62,7 +60,6 @@ Matrix operator*(const Matrix &a, const Matrix &b)
 
 bool operator==(const Matrix &a, const Matrix &b)
 {
-	// dd YOUR CODE HERE !!!
 	if (a.getRows() != b.getRows() || a.getCols() != b.getCols())
 	{
 		return false;
@@ -82,7 +79,6 @@ bool operator==(const Matrix &a, const Matrix &b)
 
 bool operator!=(const Matrix &a, const Matrix &b)
 {
-	// wk YOUR CODE HERE !!!
 	return !(a == b);
 }
 
@@ -90,7 +86,6 @@ bool operator!=(const Matrix &a, const Matrix &b)
 /// Separate columns by ' ' and rows by '\n'
 ostream &operator<<(ostream &os, const Matrix &a)
 {
-	// ld YOUR CODE HERE !!!
 	for (int x = 0; x < a.getRows(); x++)
 	{
 		for (int y = 0; y < a.getCols(); y++)
@@ -104,7 +99,6 @@ ostream &operator<<(ostream &os, const Matrix &a)
 
 RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2)
 {
-	// dd YOUR CODE HERE !!!
 	a[0][0] = cos(theta);
 	a[0][1] = -1.0 * sin(theta);
 	a[1][0] = sin(theta);
@@ -113,12 +107,10 @@ RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2)
 
 ScalingMatrix::ScalingMatrix(double scale) : Matrix(2, 2)
 {
-	// wk YOUR CODE HERE !!!
         a[0][0] = scale;
         a[0][1] = 0;
         a[1][0] = 0;
         a[1][1] = scale;
-        
 }
 
 /// 2D Translation matrix
@@ -143,4 +135,5 @@ TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols)
 		a[1][i] = yShift;
 	}
 }
+
 } // namespace Matrices
