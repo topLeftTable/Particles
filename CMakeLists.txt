@@ -15,6 +15,7 @@ FetchContent_MakeAvailable(SFML)
 add_executable(Particles main.cpp
         main.cpp
         Matrices.h
+        Matrices.cpp
         Engine.h
         Engine.cpp
         Particle.h
