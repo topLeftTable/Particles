@@ -72,7 +72,8 @@ bool operator==(const Matrix &a, const Matrix &b)
 	{
 		for (int c = 0; c < a.getCols(); c++)
 		{
-			if (a(r, c) - b(r, c) > 0.001 || a(r, c) - b(r, c) < -0.001) return false;
+			if (a(r, c) - b(r, c) > 0.001 || a(r, c) - b(r, c) < -0.001)
+				return false;
 		}
 	}
 
@@ -94,9 +95,9 @@ ostream &operator<<(ostream &os, const Matrix &a)
 	{
 		for (int y = 0; y < a.getCols(); y++)
 		{
-			os<<a(x, y)<<' ';
+			os << a(x, y) << ' ';
 		}
-		os<<"\n";
+		os << "\n";
 	}
 	return os;
 }
@@ -123,9 +124,9 @@ yShift  yShift  yShift  ...
 /// paramaters are xShift, yShift, and nCols
 /// nCols represents the number of columns in the matrix
 /// where each column contains one (x,y) coordinate pair
-TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols) : Matrix(2, nCols)
+TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols)
+	: Matrix(2, nCols)
 {
 	// ld YOUR CODE HERE !!!
-
 }
-}
+} // namespace Matrices
