@@ -33,9 +33,9 @@ Particle::Particle(RenderTarget &target, int numPoints,
 
 	for (int j = 0; j < numPoints; j++)
 	{
-		int r = rand() % 80 + 20; // Range of [20:80]
-		int dx = r * cos(theta);
-		int dy = r * sin(theta);
+		int r = rand() % (80 - 20 + 1) + 20; // Range of [20:80]
+		float dx = r * cos(theta);
+		float dy = r * sin(theta);
 		m_A(0, j) = m_centerCoordinate.x + dx;
 		m_A(1, j) = m_centerCoordinate.y + dy;
 		theta += dTheta;
