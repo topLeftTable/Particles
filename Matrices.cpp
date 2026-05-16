@@ -1,7 +1,16 @@
 #include "Matrices.h"
 using namespace Matrices;
 
-Matrix::Matrix(int _rows, int _cols) : rows(_rows), cols(_cols) {}
+/// Construct a matrix of the specified size.
+/// Initialize each element to 0.
+Matrix::Matrix(int _rows, int _cols) : rows(_rows), cols(_cols)
+{
+	a.resize(rows);
+	for (int i = 0; i < rows; i++)
+	{
+		a[i].resize(cols, 0);
+	}
+}
 
 Matrix operator+(const Matrix &a, const Matrix &b)
 {
