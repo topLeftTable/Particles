@@ -26,7 +26,7 @@ Particle::Particle(RenderTarget &target, int numPoints,
 	if (rand() % 2 != 0) m_vx *= -1.0;
 
 	m_color1 = Color(255, 255, 255);	// White
-	m_color2 = Color(255, 0, 0); // Red
+	m_color2 = Color(rand() % 255, rand() % 255, rand() % 255); // the color
 
 	/*******************************************************************************/
 	// Generate numPoint vertices by sweeping circular arc with randomized radii
