@@ -17,6 +17,9 @@ Particle::Particle(RenderTarget &target, int numPoints,
 	m_centerCoordinate =
 		target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
 
+	m_centerCoordinate.x = round(m_centerCoordinate.x);
+	m_centerCoordinate.y = round(m_centerCoordinate.y);
+
 	m_vx = rand() % 500; // Initial horizontal & vertical velocities of particle
 	m_vy = rand() % 500; // Set to random pixel velocities
 
