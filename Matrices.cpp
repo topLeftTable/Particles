@@ -72,7 +72,7 @@ bool operator==(const Matrix &a, const Matrix &b)
 	{
 		for (int c = 0; c < a.getCols(); c++)
 		{
-			if (a(r, c) - b(r, c) > 0.001 || a(r, c) - b(r, c) < -0.001)
+			if (a(r, c) - b(r, c) > 0.000001 || a(r, c) - b(r, c) < -0.000001)
 				return false;
 		}
 	}

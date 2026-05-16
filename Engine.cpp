@@ -4,9 +4,11 @@
 Engine::Engine()
 {
 	/// YOUR CODE HERE !!!
-        short int w = VideoMode::getDesktopMode().width;
-        short int h = VideoMode::getDesktopMode().height;
-	m_Window.create(sf::VideoMode(w, h), "Particles");
+	unsigned int w = VideoMode::getDesktopMode().width;
+	unsigned int h = VideoMode::getDesktopMode().height;
+	if (w % 2 != 0) w--; // bandaid fix for off-by-one
+	if (h % 2 != 0) h--;
+	m_Window.create(sf::VideoMode(w, h), "Particles", Style::Default);
 	// I feel like there should be more to this?
 }
 
@@ -19,7 +21,7 @@ void Engine::run()
 	Particle p(m_Window, 4,
 			   {(int)m_Window.getSize().x / 2, (int)m_Window.getSize().y / 2});
 	p.unitTests();
-	cout << "Unit tests complete. Starting engine..." << endl;
+	cout << "Unit tests complete.  Starting engine..." << endl;
 
 	while (m_Window.isOpen())
 	{
@@ -56,9 +58,10 @@ void Engine::input()
 				m_particles.emplace_back(m_Window, dist(gen), mPos);
 			}
 		}
-                if (event.type == Event::Closed) {
-                  m_Window.close();
-                }
+		if (event.type == Event::Closed)
+		{
+			m_Window.close();
+		}
 	}
 }
 void Engine::update(float dtAsSeconds)

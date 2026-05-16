@@ -17,8 +17,10 @@ Particle::Particle(RenderTarget &target, int numPoints,
 	m_centerCoordinate =
 		target.mapPixelToCoords(mouseClickPosition, m_cartesianPlane);
 
-	m_vx = rand() % 2; // Initial horizontal & vertical velocities of particle
-	m_vy = rand() % 2; // Set to random pixel velocities
+	m_vx = rand() % 500; // Initial horizontal & vertical velocities of particle
+	m_vy = rand() % 500; // Set to random pixel velocities
+
+	if (rand() % 2 != 0) m_vx *= -1.0;
 
 	m_color1 = Color(0, 0, 0);	// White
 	m_color2 = Color(255, 0, 0); // Red
