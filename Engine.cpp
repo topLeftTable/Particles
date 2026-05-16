@@ -4,8 +4,9 @@
 Engine::Engine()
 {
 	/// YOUR CODE HERE !!!
-
-	m_Window.create(sf::VideoMode(800, 600), "Particles");
+        short int w = VideoMode::getDesktopMode().width;
+        short int h = VideoMode::getDesktopMode().height;
+	m_Window.create(sf::VideoMode(w, h), "Particles");
 	// I feel like there should be more to this?
 }
 
@@ -55,6 +56,9 @@ void Engine::input()
 				m_particles.emplace_back(m_Window, dist(gen), mPos);
 			}
 		}
+                if (event.type == Event::Closed) {
+                  m_Window.close();
+                }
 	}
 }
 void Engine::update(float dtAsSeconds)
