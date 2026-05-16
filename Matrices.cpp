@@ -105,6 +105,10 @@ ostream &operator<<(ostream &os, const Matrix &a)
 RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2)
 {
 	// dd YOUR CODE HERE !!!
+	a[0][0] = cos(theta);
+	a[0][1] = -1.0 * sin(theta);
+	a[1][0] = sin(theta);
+	a[1][1] = cos(theta);
 }
 
 ScalingMatrix::ScalingMatrix(double scale) : Matrix(2, 2)
