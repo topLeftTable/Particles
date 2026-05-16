@@ -110,6 +110,11 @@ RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2)
 ScalingMatrix::ScalingMatrix(double scale) : Matrix(2, 2)
 {
 	// wk YOUR CODE HERE !!!
+        a[0][0] = scale;
+        a[0][1] = 0;
+        a[1][0] = 0;
+        a[1][1] = scale;
+        
 }
 
 /// 2D Translation matrix
