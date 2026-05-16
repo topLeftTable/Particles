@@ -128,7 +128,10 @@ TranslationMatrix::TranslationMatrix(double xShift, double yShift, int nCols)
 	: Matrix(2, nCols)
 {
 	// ld YOUR CODE HERE !!!
-	for (int i = 0; i < nCols; i++) a[0][i] = xShift;
-	for (int j = 0; j < nCols; j++) a[1][j] = yShift;
+	for (int i = 0; i < nCols; i++)
+	{
+		a[0][i] = xShift;
+		a[1][i] = yShift;
+	}
 }
 } // namespace Matrices
