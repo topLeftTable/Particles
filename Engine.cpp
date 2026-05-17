@@ -51,6 +51,7 @@ void Engine::input()
 		if (event.type == sf::Event::MouseButtonPressed)
 		{
 			pressed = true;
+			framesSinceLastDrag = 0;
 		}
 		else if (event.type == sf::Event::MouseButtonReleased)
 		{
@@ -58,11 +59,16 @@ void Engine::input()
 		}
 		if (pressed)
 		{
-			sf::Vector2i mPos = sf::Mouse::getPosition(m_Window);
-			for (int i = 0; i < 5; i++)
+			if (framesSinceLastDrag == 0)
 			{
-				m_particles.emplace_back(m_Window, dist(gen), mPos);
+				sf::Vector2i mPos = sf::Mouse::getPosition(m_Window);
+				for (int i = 0; i < 5; i++)
+				{
+					m_particles.emplace_back(m_Window, dist(gen), mPos);
+				}
 			}
+			if (framesSinceLastDrag == 5) framesSinceLastDrag = 0;
+			else framesSinceLastDrag++;
 		}
 		if (event.type == Event::Closed)
 		{

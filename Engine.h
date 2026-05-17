@@ -20,6 +20,7 @@ class Engine
 	void draw();
 
 	bool pressed = false;
+	unsigned int framesSinceLastDrag = 0;
 
   public:
 	// The Engine constructor
