@@ -5,8 +5,10 @@ Engine::Engine()
 {
 	unsigned int w = VideoMode::getDesktopMode().width;
 	unsigned int h = VideoMode::getDesktopMode().height;
-	if (w % 2 != 0) w--; // bandaid fix for off-by-one
-	if (h % 2 != 0) h--;
+	if (w % 2 != 0)
+		w--; // bandaid fix for off-by-one
+	if (h % 2 != 0)
+		h--;
 	m_Window.create(sf::VideoMode(w, h), "Particles", Style::Default);
 }
 
@@ -47,6 +49,14 @@ void Engine::input()
 			}
 		}
 		if (event.type == sf::Event::MouseButtonPressed)
+		{
+			pressed = true;
+		}
+		else if (event.type == sf::Event::MouseButtonReleased)
+		{
+			pressed = false;
+		}
+		if (pressed)
 		{
 			sf::Vector2i mPos = sf::Mouse::getPosition(m_Window);
 			for (int i = 0; i < 5; i++)

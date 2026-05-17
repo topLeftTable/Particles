@@ -77,10 +77,7 @@ bool operator==(const Matrix &a, const Matrix &b)
 	return true;
 }
 
-bool operator!=(const Matrix &a, const Matrix &b)
-{
-	return !(a == b);
-}
+bool operator!=(const Matrix &a, const Matrix &b) { return !(a == b); }
 
 /// Output matrix.
 /// Separate columns by ' ' and rows by '\n'
@@ -107,10 +104,10 @@ RotationMatrix::RotationMatrix(double theta) : Matrix(2, 2)
 
 ScalingMatrix::ScalingMatrix(double scale) : Matrix(2, 2)
 {
-        a[0][0] = scale;
-        a[0][1] = 0;
-        a[1][0] = 0;
-        a[1][1] = scale;
+	a[0][0] = scale;
+	a[0][1] = 0;
+	a[1][0] = 0;
+	a[1][1] = scale;
 }
 
 /// 2D Translation matrix

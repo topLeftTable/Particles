@@ -24,12 +24,12 @@ add_executable(Particles main.cpp
 target_compile_features(Particles PRIVATE cxx_std_20)
 target_link_libraries(Particles PRIVATE sfml-graphics sfml-audio sfml-window)
 
-foreach(DIR ${ASSET_DIRS})
+foreach (DIR ${ASSET_DIRS})
     add_custom_command(TARGET Particles POST_BUILD
             COMMAND ${CMAKE_COMMAND} -E copy_directory
             "${CMAKE_CURRENT_SOURCE_DIR}/${DIR}"
             "${CMAKE_BINARY_DIR}/bin/${DIR}"
     )
-endforeach()
+endforeach ()
 
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Particles)

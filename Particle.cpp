@@ -23,9 +23,10 @@ Particle::Particle(RenderTarget &target, int numPoints,
 	m_vx = rand() % 500; // Initial horizontal & vertical velocities of particle
 	m_vy = rand() % 500; // Set to random pixel velocities
 
-	if (rand() % 2 != 0) m_vx *= -1.0;
+	if (rand() % 2 != 0)
+		m_vx *= -1.0;
 
-	m_color1 = Color(255, 255, 255);	// White
+	m_color1 = Color(255, 255, 255);							// White
 	m_color2 = Color(rand() % 255, rand() % 255, rand() % 255); // the color
 
 	/*******************************************************************************/
@@ -50,14 +51,15 @@ void Particle::draw(RenderTarget &target, RenderStates states) const
 	//	vvvv logan's
 	/// YOUR CODE HERE !!!
 	VertexArray lines(TriangleFan, m_numPoints + 1);
-	Vector2f center = Vector2f(
-		target.mapCoordsToPixel(m_centerCoordinate, m_cartesianPlane));
+	Vector2f center =
+		Vector2f(target.mapCoordsToPixel(m_centerCoordinate, m_cartesianPlane));
 	lines[0].position = center;
 	lines[0].color = m_color1;
 
 	for (int j = 1; j <= m_numPoints; j++)
 	{
-		lines[j].position = Vector2f(target.mapCoordsToPixel(Vector2f(m_A(0, j - 1), m_A(1, j - 1)), m_cartesianPlane));
+		lines[j].position = Vector2f(target.mapCoordsToPixel(
+			Vector2f(m_A(0, j - 1), m_A(1, j - 1)), m_cartesianPlane));
 		lines[j].color = m_color2;
 	}
 

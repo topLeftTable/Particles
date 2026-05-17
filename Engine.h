@@ -19,6 +19,8 @@ class Engine
 	void update(float dtAsSeconds);
 	void draw();
 
+	bool pressed = false;
+
   public:
 	// The Engine constructor
 	Engine();
