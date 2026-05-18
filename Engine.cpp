@@ -10,6 +10,8 @@ Engine::Engine()
 	if (h % 2 != 0)
 		h--;
 	m_Window.create(sf::VideoMode(w, h), "Particles", Style::Default);
+
+	font.loadFromFile("fonts/IBMPlexMono-Regular.ttf");
 }
 
 void Engine::run()
@@ -21,6 +23,11 @@ void Engine::run()
 			   {(int)m_Window.getSize().x / 2, (int)m_Window.getSize().y / 2});
 	p.unitTests();
 	cout << "Unit tests complete.  Starting engine..." << endl;
+
+	text.setFillColor(Color::White);
+	text.setCharacterSize(30);
+	text.setPosition(20, 20);
+	text.setFont(font);
 
 	while (m_Window.isOpen())
 	{
@@ -95,10 +102,15 @@ void Engine::update(float dtAsSeconds)
 void Engine::draw()
 {
 	m_Window.clear();
-	int size = m_particles.size();
+	size_t size = m_particles.size();
 	for (int i = 0; i < size; i++)
 	{
 		m_Window.draw(m_particles[i]);
 	}
+
+	ostringstream message;
+	message<<"Number of particles: "<<size;
+	text.setString(message.str());
+	m_Window.draw(text);
 	m_Window.display();
 }

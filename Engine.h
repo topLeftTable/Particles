@@ -22,6 +22,9 @@ class Engine
 	bool pressed = false;
 	unsigned int framesSinceLastDrag = 0;
 
+	sf::Text text;
+	sf::Font font;
+
   public:
 	// The Engine constructor
 	Engine();
