@@ -249,3 +249,23 @@ void Particle::unitTests()
 
 	cout << "Score: " << score << " / 7" << endl;
 }
+
+void Particle::colorShift(int amt, int rate)
+{
+	if (m_color2.r == 255) rDir = false;
+	else if (m_color2.r == 0) rDir = true;
+
+	if (m_color2.g == 255) gDir = false;
+	else if (m_color2.g == 0) gDir = true;
+
+	if (m_color2.b == 255) bDir = false;
+	else if (m_color2.b == 0) bDir = true;
+
+	if (colorShiftCounter % rate == 0)
+	{
+		m_color2.r += (rDir ? amt : -amt);
+		m_color2.g += (gDir ? amt : -amt);
+		m_color2.b += (bDir ? amt : -amt);
+	}
+	colorShiftCounter++;
+}

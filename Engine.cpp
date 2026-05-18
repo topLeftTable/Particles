@@ -88,6 +88,7 @@ void Engine::update(float dtAsSeconds)
 	for (vector<Particle>::iterator it = m_particles.begin();
 		 it != m_particles.end();)
 	{
+		it->colorShift(1, 2);
 		if (it->getTTL() > 3.00)
 		{
 			it->update(dtAsSeconds);

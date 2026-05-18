@@ -21,6 +21,8 @@ class Particle : public Drawable
 	bool almostEqual(double a, double b, double eps = 0.0001);
 	void unitTests();
 
+	void colorShift(int amt, int rate);
+
   private:
 	float m_ttl;
 	int m_numPoints;
@@ -32,6 +34,12 @@ class Particle : public Drawable
 	Color m_color1;
 	Color m_color2;
 	Matrix m_A;
+
+	int colorShiftCounter = 0;
+	bool rDir = true;
+	bool gDir = true;
+	bool bDir = true;
+
 
 	/// rotate Particle by theta radians counter-clockwise
 	/// construct a RotationMatrix R, left mulitply it to m_A
