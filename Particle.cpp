@@ -1,7 +1,7 @@
 #include "Particle.h"
 
 Particle::Particle(RenderTarget &target, int numPoints,
-				   Vector2i mouseClickPosition)
+				   Vector2i mouseClickPosition, bool circleSpawn)
 	: m_A(2, numPoints)
 {
 	m_ttl = TTL; // "Time To Live" -- (currently 5 sec.)
@@ -20,12 +20,17 @@ Particle::Particle(RenderTarget &target, int numPoints,
 	m_centerCoordinate.x = round(m_centerCoordinate.x);
 	m_centerCoordinate.y = round(m_centerCoordinate.y);
 
+	if (circleSpawn)
+	{
+		m_centerCoordinate.x += 300 * cos(m_numPoints);
+		m_centerCoordinate.y += 300 * sin(m_numPoints);
+	}
+
 	m_vx = rand() % 500; // Initial horizontal & vertical velocities of particle
 	m_vy = rand() % 500; // Set to random pixel velocities
 
 	if (rand() % 2 != 0)
 		m_vx *= -1.0;
-
 	m_color1 = Color(255, 255, 255);							// White
 	m_color2 = Color(rand() % 255, rand() % 255, rand() % 255); // the color
 

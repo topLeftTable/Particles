@@ -71,7 +71,7 @@ void Engine::input()
 				sf::Vector2i mPos = sf::Mouse::getPosition(m_Window);
 				for (int i = 0; i < 5; i++)
 				{
-					m_particles.emplace_back(m_Window, dist(gen), mPos);
+					m_particles.emplace_back(m_Window, dist(gen), mPos, true);
 				}
 			}
 			if (framesSinceLastDrag == 5) framesSinceLastDrag = 0;
