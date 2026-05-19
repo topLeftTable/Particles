@@ -1,4 +1,5 @@
 # Particles
+<img width="1800" height="424" alt="Trail of Particles" src="https://github.com/user-attachments/assets/e7535303-c4b9-4521-a375-a668f927fc34" />
 
 # Usage
 `Mouse Click` to launch a short burst of colorful particles.
